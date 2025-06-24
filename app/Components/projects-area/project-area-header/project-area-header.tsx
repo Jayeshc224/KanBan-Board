@@ -16,7 +16,7 @@ export default function ProjectAreaHeader() {
             <span className="text-sm text-gray-500">Sort </span>
          </div>
           <SortingDropDown />
-          <Button className="rounded-3xl px-4"> Add Task</Button>
+          <Button className="rounded-3xl px-4 text-white"> Add Task</Button>
        </div>
     )
 }

@@ -22,7 +22,7 @@ export default function SingleBoard({board}: {board: Board}) {
     
     return (
         
-    <div className="w-full p-4 rounded-lg bg-black">
+    <div className="w-full p-4 rounded-lg">
         
        <div className={`flex justify-between items-center p-4 rounded-lg ${bgColor}`} >
 
@@ -33,7 +33,7 @@ export default function SingleBoard({board}: {board: Board}) {
        </div>
     </div>
 
-    <div className="mt-7">
+    <div className="mt-4 space-y-3">
         {[1,2].map((index)=>(
           <SingleTask key={index} />
         ))} 

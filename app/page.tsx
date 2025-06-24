@@ -10,7 +10,7 @@ export default function Home() {
   return (
    <div className={`${bgColor} border min-h-screen w-full`}>
     <NavBar/>
-    <div className="grid grid-cols-[3fr_1fr] ps-6 mt-8 poppins gap-4">
+    <div className="px-6 mt-8 poppins">
       <ProjectsArea />
     </div>
    </div>

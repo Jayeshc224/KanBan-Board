@@ -19,8 +19,8 @@ export default function NavBar() {
             </div>
 
             <div className="flex items-center gap-5">
-                <Separator orientation="vertical" className="h-5 w-[2px] bg-gray-500" />
                 <ModeToggle />
+                <div className="h-5 w-[2px] bg-gray-300 dark:bg-gray-600 rounded-full"></div>
                <Button className="rounded-3xl h-10 shadow-none bg-primary text-white font-semibold">
                 Add New Project
                </Button>
