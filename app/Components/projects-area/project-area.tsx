@@ -10,7 +10,7 @@ export default function ProjectsArea() {
           <ProjectAreaHeader />
           <ProjectAreaBoard />
         </Card>
-        <div className="w-80 flex-shrink-0">
+        <div className="w-96 flex-shrink-0">
           <RightSideBar/>
         </div>
       </div>

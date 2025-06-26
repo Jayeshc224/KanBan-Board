@@ -6,9 +6,9 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
+    DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu"
 import React from "react";
-import { DropdownMenuCheckboxItem } from "@radix-ui/react-dropdown-menu";
 
 
 const options = ["A-Z", "Z-A"];

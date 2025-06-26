@@ -26,10 +26,10 @@ export default function SingleBoard({board}: {board: Board}) {
         
        <div className={`flex justify-between items-center p-4 rounded-lg ${bgColor}`} >
 
-       <span className="text-md font-medium">{boardName}</span>
+       <span className="text-lg font-bold">{boardName}</span>
 
-       <div className="size-6 rounded-full bg-primary text-white flex items-center justify-center">
-        <span className="text-md font-medium">{numberTasks}</span>
+       <div className="size-7 rounded-full bg-primary text-white flex items-center justify-center">
+        <span className="text-base font-bold">{numberTasks}</span>
        </div>
     </div>
 
