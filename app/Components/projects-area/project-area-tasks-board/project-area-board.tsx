@@ -1,5 +1,5 @@
 import SingleBoard, { Board } from "./single-board";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 // Create a custom event system to share board data
 const emitBoardData = (boards: Board[]) => {
@@ -62,7 +62,7 @@ export default function ProjectAreaBoard({ onBoardsChange }: ProjectAreaBoardPro
 
     const eventListenerAdded = useRef(false);
 
-    const handleTaskMove = (taskId: string, fromBoardId: string, toBoardId: string) => {
+    const handleTaskMove = useCallback((taskId: string, fromBoardId: string, toBoardId: string) => {
         setBoards(prevBoards => {
             const newBoards = [...prevBoards];
             
@@ -84,7 +84,7 @@ export default function ProjectAreaBoard({ onBoardsChange }: ProjectAreaBoardPro
             
             return newBoards;
         });
-    };
+    }, []);
 
     // Listen for new task creation events
     useEffect(() => {
@@ -136,7 +136,7 @@ export default function ProjectAreaBoard({ onBoardsChange }: ProjectAreaBoardPro
             window.removeEventListener('requestBoardData', handleRequestBoardData);
             eventListenerAdded.current = false;
         };
-    }, [boards]);
+    }, []); // Remove boards from dependency array since we use functional updates
 
     // Emit board data whenever boards change
     useEffect(() => {
@@ -153,7 +153,7 @@ export default function ProjectAreaBoard({ onBoardsChange }: ProjectAreaBoardPro
         if (onBoardsChange) {
             onBoardsChange(boards);
         }
-    }, []); // Empty dependency array means this runs only once on mount
+    }, [boards, onBoardsChange]); // Add proper dependencies
 
     return (
         <div className="h-full rounded-2xl flex items-center mt-4 gap-3">
