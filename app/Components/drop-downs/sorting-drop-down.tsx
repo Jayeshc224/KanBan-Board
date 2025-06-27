@@ -4,7 +4,6 @@ import { IoArrowDown, IoArrowUp } from "react-icons/io5";
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuItem,
     DropdownMenuTrigger,
     DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu"

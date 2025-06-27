@@ -4,8 +4,31 @@ import SortingDropDown from "../../drop-downs/sorting-drop-down";
 import { Button } from "@/components/ui/button";
 import TaskDialog from "../../window-dialog/task-dialog/task-dialog";
 
+// Create a custom event system to share new task data
+const emitNewTask = (task: {
+    id: string;
+    title: string;
+    description: string;
+    priority: string;
+    projectId: string;
+}) => {
+    const event = new CustomEvent('newTaskCreated', { detail: task });
+    window.dispatchEvent(event);
+};
+
 export default function ProjectAreaHeader() {
     const [isTaskDialogOpen, setIsTaskDialogOpen] = useState(false);
+
+    const handleTaskCreate = (task: {
+        id: string;
+        title: string;
+        description: string;
+        priority: string;
+        projectId: string;
+    }) => {
+        // Emit the new task event
+        emitNewTask(task);
+    };
 
     return (
        <div className="flex justify-between items-center">
@@ -24,7 +47,8 @@ export default function ProjectAreaHeader() {
             </Button>
             <TaskDialog 
                 open={isTaskDialogOpen} 
-                onOpenChange={setIsTaskDialogOpen} 
+                onOpenChange={setIsTaskDialogOpen}
+                onTaskCreate={handleTaskCreate}
             />
          </div>
        </div>

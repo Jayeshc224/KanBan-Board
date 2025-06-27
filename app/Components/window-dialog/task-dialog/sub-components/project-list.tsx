@@ -1,5 +1,4 @@
 import { Label } from "@radix-ui/react-dropdown-menu"
-import { useState } from "react";
 import { FaFlagCheckered } from "react-icons/fa";
 import { FaMobileRetro } from "react-icons/fa6";
 import { IconType } from "react-icons/lib";
@@ -33,11 +32,16 @@ export const projects: Project[] = [
     },
 ]
 
-export default function ProjectList() {
-    const [selectedProject, setSelectedProject] = useState<Project>(projects[0]);
+interface ProjectListProps {
+    value: string;
+    onChange: (value: string) => void;
+}
+
+export default function ProjectList({ value, onChange }: ProjectListProps) {
+    const selectedProject = projects.find(project => project.id === value) || projects[0];
 
     function handleProjectSelect(project: Project) {
-        setSelectedProject(project);
+        onChange(project.id);
     }
 
     return (

@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import SearchBar from "./search-bar";
 import AppNameAndLogo from "./logo-app";
-import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "@/app/mode-toggle";
 
 
