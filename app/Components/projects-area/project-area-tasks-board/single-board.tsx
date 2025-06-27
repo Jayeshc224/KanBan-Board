@@ -23,7 +23,6 @@ export default function SingleBoard({ board, onTaskMove }: SingleBoardProps) {
     const { name: boardName, tasks, id: boardId } = board;
     const { theme } = useTheme();
     const [isDragOver, setIsDragOver] = useState(false);
-    const [draggedTaskId, setDraggedTaskId] = useState<string | null>(null);
     const [draggedFromBoardId, setDraggedFromBoardId] = useState<string | null>(null);
 
     const numberTasks = tasks.length;
@@ -44,14 +43,12 @@ export default function SingleBoard({ board, onTaskMove }: SingleBoardProps) {
     };
 
     const handleDragStart = (e: React.DragEvent, taskId: string) => {
-        setDraggedTaskId(taskId);
         setDraggedFromBoardId(boardId);
         e.dataTransfer.setData("text/plain", taskId);
         e.dataTransfer.setData("application/json", JSON.stringify({ taskId, fromBoardId: boardId }));
     };
 
-    const handleDragEnd = (e: React.DragEvent) => {
-        setDraggedTaskId(null);
+    const handleDragEnd = () => {
         setDraggedFromBoardId(null);
     };
 
@@ -60,7 +57,7 @@ export default function SingleBoard({ board, onTaskMove }: SingleBoardProps) {
         setIsDragOver(true);
     };
 
-    const handleDragLeave = (e: React.DragEvent) => {
+    const handleDragLeave = () => {
         setIsDragOver(false);
     };
 
@@ -76,7 +73,7 @@ export default function SingleBoard({ board, onTaskMove }: SingleBoardProps) {
                     onTaskMove(taskId, fromBoardId, boardId);
                 }
             }
-        } catch (error) {
+        } catch {
             // Fallback to text data
             const taskId = e.dataTransfer.getData("text/plain");
             if (taskId && draggedFromBoardId && draggedFromBoardId !== boardId) {

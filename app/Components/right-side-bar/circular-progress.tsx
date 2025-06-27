@@ -1,4 +1,3 @@
-import {CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Board } from "../projects-area/project-area-tasks-board/single-board";
 import { useState, useEffect } from "react";

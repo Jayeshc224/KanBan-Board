@@ -1,10 +1,6 @@
 import { Board } from "../projects-area/project-area-tasks-board/single-board";
 import { useState, useEffect } from "react";
 
-interface TaskStatsProps {
-    boards: Board[];
-}
-
 type TaskCard = {
     label: string;
     value: number;
